@@ -1,0 +1,8 @@
+- Definição de tipos de dados: vamos trabalhar com cartas que possuem valor e
+naipe, similar a problemas que já tivemos na disciplina. É muito interessante criar
+registros e enumerações para tratar disso (FEITO)
+
+- Definição do conjunto de dados a guardar: é preciso guardar a mão e os jogos que foram baixados. Esses dois dados vão variar bastante ao longo do programa, e é
+importante usar alocação dinâmica na definição deles.
+
+- Processar a entrada e saída: ler as strings e converter para os dados que precisam ser armazenados. e vice-versa.

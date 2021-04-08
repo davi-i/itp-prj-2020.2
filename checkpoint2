@@ -1,0 +1,9 @@
+- Nesse checkpoint, vamos fazer nosso bot seguir a sequência do fluxo natural do jogo: pegar uma carta, verificar se tem jogo para baixar e descartar uma carta. Aqui ele não precisa ainda fazer a melhor jogada do mundo, apenas queremos que ele consiga seguir o fluxo do jogo e enviar as mensagens de acordo para o programa juíz. Ou seja, deixar ele funcionando, mesmo que lezin.
+
+- Implementar puxada de carta verificando se dá pra puxar o lixo ou não
+
+- Organizar a mão para verificar se há jogos a serem puxados. Pensar em deixar a
+mão organizada por naipes (os jogos, tirando os melés, precisam ser de mesmo
+naipe)
+
+- Implementar a seleção do descarte (qualquer estratégia)
