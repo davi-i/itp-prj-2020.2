@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Projeto da disciplina de ITP - 2020.2
 
 O projeto da disciplina de ITP deste semestre consiste em você desenvolver uma bot para jogar um jogo clássico de cartas: **Buraco**.
@@ -250,3 +251,6 @@ O arquivo `game1.in` que se encontra na pasta `test_files` exemplifica o formato
 ```sh
 node buraco -i test_files/caso_1.txt bot
 ```
+=======
+# itp-prj-2020.2
+>>>>>>> 7da894900aba4af1caa74a1243480974820a0af5
