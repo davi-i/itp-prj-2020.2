@@ -10,86 +10,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-/** Tamanho máximo de uma linha da entrada-padrão */
-#define MAX_LINE 200
-
-/** Tamanho máximo do identificador do bot */
-#define ID_SIZE 50
+#include "definitions.h"
+#include "functions.h"
 
 FILE *log_file;
-
-enum suit {
-  Diamonds,
-  Heart,
-  Clubs,
-  Spades
-};
-
-enum value {
-  Two = 2,
-  Three,
-  Four,
-  Five,
-  Six,
-  Seven,
-  Eight,
-  Nine,
-  Ten,
-  Jack,
-  Queen,
-  King,
-  Ace
-};
-
-typedef struct {
-  enum suit suit;
-  enum value value;
-} Card;
-
-typedef struct {
-  Card* cards;
-  int index;
-  int length;
-} CardArray;
-
-/**
- * Lê uma linha da entrada padrão e remove o '\n' se necessário.
- * @param line string a ser alterada com o conteúdo da entrada-padrão.
- */
-void read_line(char *line) {
-  fgets(line, MAX_LINE, stdin);
-  int l = strlen(line) - 1;
-  if(line[l] == '\n') {
-    line[l] = '\0';
-  }
-}
-
-void read_card(Card* card, char *line){
-  char suit_char[4], value_char;
-
-  if (line[0] == '1')
-    sscanf(line, "%c%*c%s", &value_char, suit_char);
-  else
-    sscanf(line, "%c%s", &value_char, suit_char);
-
-  switch (value_char){
-    case 'A': card->value = Ace; break;
-    case 'K': card->value = King; break;
-    case 'Q': card->value = Queen; break;
-    case 'J': card->value = Jack; break;
-    case '1': card->value = Ten; break;
-    default: card->value = value_char - '0';
-  }
-
-  if (strcmp(suit_char, "♦") == 0)
-    card->suit = Diamonds;
-  else if (strcmp(suit_char, "♥") == 0)
-    card->suit = Heart;
-  else if (strcmp(suit_char, "♣") == 0)
-    card->suit = Clubs;
-  else if (strcmp(suit_char, "♠") == 0)
-    card->suit = Spades;
-}
 
 int main() {
   char line[MAX_LINE];   // dados temporários
@@ -142,6 +66,9 @@ int main() {
   while(1) {
     do {                   // lê e descarta os dados até chegar sua vez
       read_line(line);     // sai do laço quando for enviado seu id
+
+      // GESTÃO DO LIXO
+
     } while (strcmp(line, my_id));    // sai do laço quando for a sua vez!
 
     printf("GET_STOCK\n");         // envia a ação para puxar uma carta
