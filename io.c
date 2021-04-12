@@ -13,13 +13,13 @@ void read_line(char *line) {
   }
 }
 
-void read_card(Card* card, char *line){
+void read_card(Card* card, char *string){
   char suit_char[4], value_char;
 
-  if (line[0] == '1')
-    sscanf(line, "%c%*c%s", &value_char, suit_char);
+  if (string[0] == '1')
+    sscanf(string, "%c%*c%s", &value_char, suit_char);
   else
-    sscanf(line, "%c%s", &value_char, suit_char);
+    sscanf(string, "%c%s", &value_char, suit_char);
 
   switch (value_char){
     case 'A': card->value = Ace; break;
