@@ -1,2 +1,2 @@
 language = "c"
-run = "make all && node buraco.js bot bot2"
+run = "clear && make all && node buraco.js bot bot"

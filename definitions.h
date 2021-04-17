@@ -15,7 +15,7 @@ enum suit {
 };
 
 enum value {
-  Two = 2,
+  Two,
   Three,
   Four,
   Five,
@@ -40,4 +40,10 @@ typedef struct {
   int index;
   int length;
 } CardArray;
+
+typedef struct {
+  enum suit suit;
+  int cards[13];
+  enum suit joker_suit;
+} SetGame;
 #endif

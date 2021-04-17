@@ -1,5 +1,7 @@
+PARAMS = -fsanitize=address,undefined -g
+
 all: exec
 exec: io.o
-	gcc bot2.c io.o -o bot2
+	gcc vem_com_o_boBOTantan.c io.o -o bot $(PARAMS)
 io.o: io.c
-	gcc io.c -c
+	gcc io.c -c $(PARAMS)

@@ -27,7 +27,7 @@ void read_card(Card* card, char *string){
     case 'Q': card->value = Queen; break;
     case 'J': card->value = Jack; break;
     case '1': card->value = Ten; break;
-    default: card->value = value_char - '0';
+    default: card->value = value_char - '2';
   }
 
   if (strcmp(suit_char, "♦") == 0)

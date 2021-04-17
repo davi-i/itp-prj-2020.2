@@ -1,0 +1,305 @@
+ 7♦ J♦ Q♦ 2♥ 7♥ 7♣ 9♣ 10♣ J♣ 9♠ A♠
+Minha vez!
+lixo:  6♣
+GET_STOCK 7♣
+mão:  7♦ J♦ Q♦ 2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ 9♠ A♠
+DISCARD 7♦
+mão:  J♦ Q♦ 2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ 9♠ A♠
+Minha vez!
+lixo:  2♦ 7♦ 6♣
+GET_STOCK K♣
+mão:  J♦ Q♦ 2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ 9♠ A♠
+DISCARD J♦
+mão:  Q♦ 2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ 9♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 7♦ J♦ 6♣
+GET_STOCK K♠
+mão:  Q♦ 2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ 9♠ K♠ A♠
+DISCARD Q♦
+mão:  2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 7♦ J♦ Q♦ 6♣
+GET_STOCK 3♠
+mão:  2♥ 7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ 3♠ 9♠ K♠ A♠
+DISCARD 2♥
+mão:  7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ 3♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 6♦ 7♦ J♦ Q♦ 2♥ 6♣
+GET_STOCK A♣
+mão:  7♥ 7♣ 7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 9♠ K♠ A♠
+DISCARD 7♥
+mão:  7♣ 7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 6♦ 7♦ J♦ Q♦ 2♥ 4♥ 7♥ 6♣
+GET_STOCK 7♠
+mão:  7♣ 7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 7♠ 9♠ K♠ A♠
+DISCARD 7♣
+mão:  7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 7♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 4♣
+mão:  4♣ 7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 7♠ 9♠ K♠ A♠
+DISCARD 4♣
+mão:  7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 7♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 4♣
+GET_STOCK 4♠
+mão:  7♣ 9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+DISCARD 7♣
+mão:  9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 4♣ 7♣
+GET_STOCK 5♥
+mão:  5♥ 9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+DISCARD 5♥
+mão:  9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 6♦ 5♥ 4♣ 7♣
+GET_STOCK K♥
+mão:  K♥ 9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+DISCARD K♥
+mão:  9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 6♦ 7♦ 5♥ K♥ 4♣ 7♣
+GET_STOCK K♦
+mão:  K♦ 9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+DISCARD K♦
+mão:  9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ K♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK 10♠
+mão:  9♣ 10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ 10♠ K♠ A♠
+DISCARD 9♣
+mão:  10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK 9♠
+mão:  10♣ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 10♣
+mão:  J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  3♦ 3♦ 10♣
+GET_STOCK J♥
+mão:  J♥ J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD J♥
+mão:  J♣ K♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  3♦ 3♦ 6♦ J♥ 10♣
+GET_STOCK A♣
+mão:  J♣ K♣ A♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD J♣
+mão:  K♣ A♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  3♦ 3♦ 5♦ 6♦ J♥ 10♣ J♣
+GET_STOCK Q♣
+mão:  Q♣ K♣ A♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+mão:  Q♣ K♣ A♣ A♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+MELD_NEW [ Q♣ K♣ A♣ ]
+DISCARD A♣
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 5♦ 6♦ J♥ 10♣ J♣ A♣
+GET_STOCK 6♦
+mão:  6♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 6♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 6♥
+mão:  6♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 6♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 9♦
+mão:  9♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 9♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 9♦
+GET_STOCK 8♥
+mão:  8♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 8♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK K♣
+mão:  K♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD K♣
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ K♣
+GET_STOCK 3♥
+mão:  3♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 3♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 3♥ K♣
+GET_STOCK 3♠
+mão:  3♠ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 3♠
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♦ 5♦ 3♥ K♣ 3♠
+GET_STOCK Q♣
+mão:  Q♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD Q♣
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 8♦
+mão:  8♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 8♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 8♦
+GET_STOCK 10♥
+mão:  10♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 10♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 10♦
+mão:  10♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 10♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 6♥
+mão:  6♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 6♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 6♥
+GET_STOCK 2♠
+mão:  2♠ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 2♠
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 4♣
+mão:  4♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 4♣
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 4♦
+mão:  4♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 4♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK 3♥
+mão:  3♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 3♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 3♥
+GET_STOCK 4♦
+mão:  4♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 4♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 4♦ 6♦ 3♥
+GET_STOCK 2♣
+mão:  2♣ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 2♣
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦
+GET_STOCK A♦
+mão:  A♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD A♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ A♦
+GET_STOCK 2♠
+mão:  2♠ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 2♠
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 4♦ A♦ 2♠
+GET_STOCK 10♥
+mão:  10♥ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 10♥
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 4♦ 6♦ A♦ 10♥ 2♠
+GET_STOCK 7♦
+mão:  7♦ 3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+DISCARD 7♦
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 4♦ 6♦ 7♦ 9♦ A♦ 10♥ 2♠
+GET_STOCK K♠
+mão:  3♠ 4♠ 7♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD 3♠
+mão:  4♠ 7♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  2♦ 3♦ 4♦ 6♦ 7♦ 9♦ 10♦ A♦ 10♥ 2♠ 3♠
+GET_STOCK 8♠
+mão:  4♠ 7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD 4♠
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK 9♣
+mão:  9♣ 7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD 9♣
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  3♦ 4♦ 9♣
+GET_STOCK 2♥
+mão:  2♥ 7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD 2♥
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK 8♥
+mão:  8♥ 7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD 8♥
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK K♦
+mão:  K♦ 7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD K♦
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  3♦ 4♦ K♦
+GET_STOCK Q♥
+mão:  Q♥ 7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+DISCARD Q♥
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠
+Minha vez!
+lixo:  3♦ 4♦ 5♦ K♦ Q♥
+GET_STOCK A♠
+mão:  7♠ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+DISCARD 7♠
+mão:  8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK K♥
+mão:  K♥ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+DISCARD K♥
+mão:  8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK 8♣
+mão:  8♣ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+DISCARD 8♣
+mão:  8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+Minha vez!
+lixo:  3♦
+GET_STOCK Q♥
+mão:  Q♥ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+DISCARD Q♥
+mão:  8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+Minha vez!
+lixo:  3♦ 4♦ Q♥
+GET_STOCK 5♣
+mão:  5♣ 8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+DISCARD 5♣
+mão:  8♠ 9♠ 9♠ 10♠ K♠ K♠ A♠ A♠
+Minha vez!
+lixo:  3♦ 4♦ 5♦ Q♥ 5♣
