@@ -12,51 +12,6 @@ DUPLA:
 
 FILE *log_file;
 
-// // insertion sort
-// void sort_cards(CardArray *card_array){
-//     Card aux;
-//     for (int i = 1; i < card_array->index; i++){
-//         aux = card_array->cards[i];
-//         int j = i - 1;
-//         while (j >= 0){
-//           if (aux.suit > card_array->cards[j].suit)
-//             break;
-          
-//           if (aux.suit < card_array->cards[j].suit)
-//             card_array->cards[j + 1] = card_array->cards[j];
-//           else if (aux.value < card_array->cards[j].value)
-//             card_array->cards[j + 1] = card_array->cards[j];
-//           else
-//             break;
-//           j--;
-//         }
-//         card_array->cards[j + 1] = aux;
-//     }
-// }
-
-// void add_card_at(Card *card, CardArray *card_array, int index){
-//   if (card_array->length == card_array->index)
-//     card_array->cards = realloc(card_array->cards, sizeof(Card) * (card_array->length + 16));
-//   for (int j = card_array->index; j > index; j--)
-//     card_array->cards[j] = card_array->cards[j - 1];
-//   card_array->cards[index] = *card;
-  
-//   card_array->index++;
-// }
-
-// void add_card(Card *card, CardArray *card_array){
-//   for (int i = 0; i < card_array->index; i++){
-//     if (card->suit == card_array->cards[i].suit){
-//       if (card->value <= card_array->cards[i].value){
-//         add_card_at(card, card_array, i); 
-//         break;
-//       }
-//     } else if (card->suit < card_array->cards[i].suit){
-//       add_card_at(card, card_array, i);
-//       break;
-//     }
-//   }
-// }
 
 char* card_to_str(enum value value, enum suit suit){
   char *card_str = malloc(sizeof(char) * 6);
@@ -82,18 +37,30 @@ char* card_to_str(enum value value, enum suit suit){
   return card_str;
 }
 
-// void meld_new(int suit, int first, int quantity){
-//   char to_print[100];
-//   sprintf(to_print, "MELD_NEW [ ");
+void print_array(int array[4][13]){
+  char to_print[500] = "";
+  for (int i = 0; i < 4; i++){
+    for (int j = 0; j < 13; j++){
+      for (int k = array[i][j]; k > 0; k--)
+        sprintf(to_print, "%s %s", to_print, card_to_str(j, i));
+    }
+  }
+  fprintf(log_file, "%s\n", to_print);
+}
 
-//   for (int i = first; i < first + quantity; i++){
-//     strcat(to_print, card_to_str(suit, first));
-//     strcat(to_print, " ");
-//   }
-//   strcat(to_print, "]");
+char* game_to_str(SetGame* set_game){
+  char *game_str = malloc(sizeof(char) * 600);
+  strcpy(game_str, "");
+  for (int i = 0; i < 13; i++){
+    for (int k = set_game->cards[i]; k > 0; k--)
+      strcat(game_str, card_to_str(i, set_game->suit));
+  }
+  if (set_game->joker_suit != -1)
+    sprintf(game_str, "%s %s", game_str, card_to_str(Two, set_game->joker_suit));
+  fprintf(log_file, "%s\n", game_str);
 
-//   printf("%s\n", to_print);
-// }
+  return game_str;
+}
 
 /** * Realiza a ação GET_DISCARD
  * @param my_hand a mão do jogador.
@@ -103,7 +70,7 @@ char* card_to_str(enum value value, enum suit suit){
  * @param first o valor mais baixo das cartas a serem baixadas.
  * @param quantity a quantidade de cartas a serem baixados.
  * @param last_discard o valor do topo do lixo.
- * @param joker ponteiro para o joker a ser baixado junto com o jogo (NULL se não for baixar joker).
+ * @param joker_suit naipe do joker a ser baixado junto com o jogo (-1 se não for baixar joker).
  */
 void get_discard(int my_hand[4][13], int discard[4][13], SetGame* set_game, int suit, int first, int quantity, Card* last_discard, int joker_suit){
   // string que guarda o comando completo a ser impresso
@@ -111,13 +78,13 @@ void get_discard(int my_hand[4][13], int discard[4][13], SetGame* set_game, int 
   sprintf(to_print, "GET_DISCARD [ ");
 
   set_game->suit = suit;
+  set_game->joker_suit = joker_suit;
 
-  // imprime na string o valor do joker se ele não for NULL
+  // imprime na string o valor do joker se for baixar joker
   if (joker_suit != -1){
     strcat(to_print, card_to_str(Two, joker_suit));
     strcat(to_print, " ");
     my_hand[joker_suit][Two]--;
-    set_game->joker_suit = joker_suit;
   }
 
   // passa todas as cartas do lixo para a mão
@@ -133,10 +100,14 @@ void get_discard(int my_hand[4][13], int discard[4][13], SetGame* set_game, int 
     if (i != last_discard->value) {
       strcat(to_print, card_to_str(i, suit));
       strcat(to_print, " ");
-      set_game->cards[i]++;
     }
+    set_game->cards[i]++;
     my_hand[suit][i]--;
   }
+
+  if (last_discard->value == Two && my_hand[last_discard->suit][last_discard->value] > 0)
+    my_hand[last_discard->suit][last_discard->value]--;
+
   strcat(to_print, "]");
  
   fprintf(log_file, "%s\n", to_print);
@@ -154,18 +125,20 @@ void get_discard(int my_hand[4][13], int discard[4][13], SetGame* set_game, int 
  * @param joker_suit naipe do joker a ser baixado junto com o jogo (-1 se não for baixar joker). 
  */
 void meld_new(int my_hand[4][13], SetGame* set_game, int suit, int first, int quantity, int skip, int joker_suit){
+  fprintf(log_file, "mão: ");
+  print_array(my_hand);
   // string que guarda o comando completo a ser impresso
   char to_print[16 + 6 * quantity];
   sprintf(to_print, "MELD_NEW [ ");
   
   set_game->suit = suit;
+  set_game->joker_suit = joker_suit;
 
   // imprime na string o valor do joker se ele não for NULL
   if (joker_suit != -1){
     strcat(to_print, card_to_str(Two, joker_suit));
     strcat(to_print, " ");
     my_hand[joker_suit][Two]--;
-    set_game->joker_suit = joker_suit;
   }
 
   for (int i = first; i < first + quantity; i++){
@@ -180,19 +153,23 @@ void meld_new(int my_hand[4][13], SetGame* set_game, int suit, int first, int qu
   strcat(to_print, "]");
 
   fprintf(log_file, "%s\n", to_print);
+  fprintf(log_file, "jogo: %s", game_to_str(set_game));
   // imprime o comando
   printf("%s\n", to_print);
 }
 
-void print_array(int array[4][13]){
-  char to_print[400] = "";
-  for (int i = 0; i < 4; i++){
-    for (int j = 0; j < 13; j++){
-      for (int k = array[i][j]; k > 0; k--)
-        sprintf(to_print, "%s %s", to_print, card_to_str(j, i));
-    }
-  }
-  fprintf(log_file, "%s\n", to_print);
+void meld_join(int my_hand[4][13], SetGame* set_game, int value, int index){
+  set_game->cards[value]++;
+  my_hand[set_game->suit][value]--;
+  printf("MELD_JOIN %d [ %s ]\n", index, card_to_str(value, set_game->suit));
+  fprintf(log_file, "MELD_JOIN %d [ %s ]\n", index, card_to_str(value, set_game->suit));
+}
+
+enum suit joker_suit(int my_hand[4][13]){
+  for (int i = 0; i < 4; i++)
+      if (my_hand[i][Two] > 1)
+        return i;
+  return -1;
 }
 
 int main() {
@@ -273,96 +250,107 @@ int main() {
  
     // CHECAR SE DAR PRA PUXAR O LIXO (CP2)
 
-    fprintf(log_file, "Minha vez!\n");
-
+    // Abbreviations
     int suit = last_discard.suit;
     int value = last_discard.value;
-    // int get_discard = 0;
-    // int first_value;
-    // char to_print[30];
     
     fprintf(log_file, "lixo: ");
     print_array(discard);
     if (value >= 2 && my_hand[suit][value - 1] > 0 && my_hand[suit][value - 2] > 0){
       // Primeiro caso: o bot tem as duas cartas antecessoras do lixo na mão
-      // sprintf(to_print, "GET_DISCARD [ %s %s ]", card_to_str(value - 2, suit), card_to_str(value - 1, suit));
-      // first_value = value - 2;
-      // get_discard = 1;
       get_discard(my_hand, discard, &set_games[game_index], suit, value - 2, 3, &last_discard, -1);
       game_index++;
     } else if (value >= 1 && value < 12 && my_hand[suit][value - 1] > 0 && my_hand[suit][value + 1] > 0){
       // Segundo caso: o bot tem a carta antecessora e sucessora do lixo na mão
-      // sprintf(to_print, "GET_DISCARD [ %s %s ]", card_to_str(value - 1, suit), card_to_str(value + 1, suit));
-      // first_value = value - 1;
-      // get_discard = 1;
       get_discard(my_hand, discard, &set_games[game_index], suit, value - 1, 3, &last_discard, -1);
       game_index++;
     } else if (value < 11 && my_hand[suit][value + 1] > 0 && my_hand[suit][value + 2] > 0){
       // Terceiro caso: o bot tem as duas cartas sucessoras do lixo na mão
-      // sprintf(to_print, "GET_DISCARD [ %s %s ]", card_to_str(value + 1, suit), card_to_str(value + 2, suit));
-      // first_value = value;
-      // get_discard = 1;
       get_discard(my_hand, discard, &set_games[game_index], suit, value, 3, &last_discard, -1);
       game_index++;
     }
 
-    // AINDA PRECISA DE CASOS ESPECIAIS PRA O ÁS
+    // CASO ESPECIAL PRA O ÁS
+    else if (0 && value == 12) {
+      for (int i = 0; i < 4; i++) {
+        for(int j = 0; j < 12; j++) {
+          if(my_hand[i][Two] >= 1 && my_hand[i][Three] >= 1) {
+//               void get_discard(int my_hand[4][13], int discard[4][13], SetGame* set_game, int suit, int first, int quantity, Card* last_discard, int joker_suit){
+//   // string que guarda o comando completo a ser impresso
+  char to_print[16 + 6 * quantity];
+  sprintf(to_print, "GET_DISCARD [ ");
 
-    // if (get_discard){
-    //   fprintf(log_file, "%s\n", to_print);
-    //   printf("%s\n", to_print);
+//   set_game->suit = suit;
+//   set_game->joker_suit = joker_suit;
 
-    //   set_games[game_index].suit = suit;
-    //   set_games[game_index].cards[first_value]++;
-    //   set_games[game_index].cards[first_value + 1]++;
-    //   set_games[game_index].cards[first_value + 2]++;
-    //   set_games[game_index].joker_suit = -1;
-    //   game_index++;
-    //   for (int i = 0; i < 4; i++)
-    //     for (int j = 0; j < 13; j++)
-    //       my_hand[i][j] += discard[i][j];
+//   // imprime na string o valor do joker se for baixar joker
+//   if (joker_suit != -1){
+//     strcat(to_print, card_to_str(Two, joker_suit));
+//     strcat(to_print, " ");
+//     my_hand[joker_suit][Two]--;
+//   }
 
-    //   memset(discard, 0, sizeof(discard)); 
+//   // passa todas as cartas do lixo para a mão
+//   for (int i = 0; i < 4; i++){
+//     for (int j = 0; j < 13; j++){
+//       my_hand[i][j] += discard[i][j];
+//       discard[i][j] = 0;
+//     }
+//   }
 
-    //   my_hand[suit][first_value]--;
-    //   my_hand[suit][first_value + 1]--;
-    //   my_hand[suit][first_value + 2]--;
-    else if (value == Two){
-        printf("GET_STOCK\n");         // envia a ação para puxar uma carta
-        read_line(line);               // recebe a carta que puxou
-        fprintf(log_file, "GET_STOCK %s\n", line);
-    
-        Card new_card;
-        read_card(&new_card, line);
-        my_hand[new_card.suit][new_card.value]++;
-        // Caso o lixo seja o número 2 (joker)
-        // for(int i = 0; i < 4; i++) {
-        //   for(int j = 0; j < 13; j++) {
-        //     if(my_hand[i][j] >= 1 && my_hand[i][j + 1] >= 1) {
-        //       // THIAGO -- AQUI OLHAAAAA
-        //       // Adptar os valores
-        //       // ver a posição de acordo com o valor da carta!
-        //       set_games[game_index].suit = i;
-        //       set_games[game_index].cards[<valor da carta no jogo>]++;
-        //       set_games[game_index].cards[]++;
-        //       set_games[game_index].cards[]++;
-        //       set_games[game_index].joker_suit = -1;
-        //       game_index++;
-        //       for (int i = 0; i < 4; i++)
-        //         for (int j = 0; j < 13; j++)
-        //           my_hand[i][j] += discard[i][j];
+//   for (int i = first; i < first + quantity; i++){
+//     // se não for o valor do lixo, imprime a carta
+//     if (i != last_discard->value) {
+//       strcat(to_print, card_to_str(i, suit));
+//       strcat(to_print, " ");
+//     }
+//     set_game->cards[i]++;
+//     my_hand[suit][i]--;
+//   }
 
-        //       memset(discard, 0, sizeof(discard)); 
+//   if (last_discard->value == Two && my_hand[last_discard->suit][last_discard->value] > 0)
+//     my_hand[last_discard->suit][last_discard->value]--;
 
-        //       my_hand[suit][first_value]--;
-        //       my_hand[suit][first_value + 1]--;
-        //       my_hand[suit][first_value + 2]--;
-        //             }
-        //   }
-        // }
+//   strcat(to_print, "]");
+ 
+//   fprintf(log_file, "%s\n", to_print);
+//   // imprime o comando
+//   printf("%s\n", to_print);
+// }
+    //       }
+    //       else {
+    //         break;
+    //       }
+    //     }
+    //   }
+    // }
+
+    else if (0 && value == Two){
+      // Caso o lixo seja o número 2 (joker)
+      fprintf(log_file, "ENTREI CREU\n");
+      for(int i = 0; i < 4; i++) {
+        int to_break = 0;
+        for(int j = 0; j < 12; j++) {
+          if(my_hand[i][j] >= 1 && my_hand[i][j + 1] >= 1) {
+            get_discard(my_hand, discard, &set_games[game_index], i, j, 2, &last_discard, -1);
+            game_index++;
+            to_break = 1;
+            break;
+          }
+          // AJEITAR ISSO (função fet_discard errada)
+          else if (0 && j < 11 && my_hand[i][j] >= 1 && my_hand[i][j + 2] >= 1) {
+            get_discard(my_hand, discard, &set_games[game_index], i, j, 3, &last_discard, -1);
+            game_index++;
+            to_break = 1;
+            break;
+          }
+        }
+        if (to_break) {
+          break;
+      }}
     } else { 
-      printf("GET_STOCK\n");         // envia a ação para puxar uma carta
-      read_line(line);               // recebe a carta que puxou
+      printf("GET_STOCK\n");
+      read_line(line);       
       fprintf(log_file, "GET_STOCK %s\n", line);
   
       Card new_card;
@@ -373,35 +361,52 @@ int main() {
     print_array(my_hand);
     // CHECAR SE O JOGADOR TEM JOGO (CP2)
 
-    int joker_suit = -1;
-    for (int i = 0; i < 4; i++){
-      if (my_hand[i][Two] > 0){
-        joker_suit = i;
-        break;
-      }
+    for (int i = 0; i < game_index; i++){
+      for (int j = 10; j >= 0; j--)
+        if (set_games[i].cards[j] == 0 && set_games[i].cards[j + 1] > 0 && my_hand[set_games[i].suit][j] > 0)
+          meld_join(my_hand, &set_games[i], j, i);
+      for (int j = 1; j < 12; j++)
+        if (set_games[i].cards[j] == 0 && set_games[i].cards[j - 1] > 0 && my_hand[set_games[i].suit][j] > 0)
+          meld_join(my_hand, &set_games[i], j, i);
+      if (my_hand[set_games[i].suit][Ace] > 0 && set_games[i].cards[Ace] == 0)
+        if (set_games[i].cards[Two] > 0 || set_games[i].cards[King] > 0)
+        meld_join(my_hand, &set_games[i], Ace, i);
     }
+
+    // CUIDADO! altos indices de gambiarra (NÂO OLHE, André)
     for (int i = 0; i < 4; i++){
-      int streak = 0;
+      int before = 0;
+      int after = 0;
       int skip = -1;
       int first;
       for (int j = 0; j < 13; j++){
         if (my_hand[i][j] > 0){
-          if (streak == 0)
-            first = j;
-          streak++;
-        } else if (joker_suit != -1 && skip == -1)
+          if (skip == -1) {
+            if (before == 0)
+              first = j;
+            before++;
+          } else {
+            if (before + after == 0)
+              first = j;
+            after++;
+          }
+        } else {
+          if (before >= 3) {
+            meld_new(my_hand, &set_games[game_index], i, first, before, -1, -1);
+            game_index++;
+            before = 0;
+          } else if (after >= 3) {
+            meld_new(my_hand, &set_games[game_index], i, skip + 1, after, -1, -1);
+            game_index++;
+            before = 0;
+          // } else if (joker_suit(my_hand) != -1 && j != Two && before + after >= 2 && skip != -1){
+          //   meld_new(my_hand, &set_games[game_index], i, first, before + after, skip, joker_suit(my_hand));
+          //   before = 0;
+          } else
+            before = after;
+          after = 0;
           skip = j;
-        else {
-          streak = 0;
-          skip = -1;
         }
-      }
-      if (streak >= 3){
-        fprintf(log_file, "mão: ");
-        print_array(my_hand);
-        meld_new(my_hand, &set_games[game_index], i, first, streak, skip, joker_suit);
-        game_index++;
-        joker_suit = -1;
       }
     }
     // DECIDIR SE BAIXA O JOGO (CP3)
@@ -409,9 +414,9 @@ int main() {
     // DECIDIR QUAL CARTA DESCARTAR (CP2)
 
     char card_str[6];
-    for (int i = 0; i < 4; i++){
+    for (int j = Ace; j >= Two; j--){
       int to_break = 0;
-      for (int j = 0; j < 13; j++){
+      for (int i = 0; i < 4; i++){
         if (my_hand[i][j] > 0){
           printf("DISCARD %s\n", card_to_str(j, i));
           fprintf(log_file, "DISCARD %s\n", card_to_str(j, i));
